@@ -4,8 +4,6 @@ from flask import Flask, request, jsonify
 from flask_restful import Resource, Api
 import base64
 import json
-app = Flask(__name__)
-api = Api(app)
 
 def convertBaseToImage(imgstring):
     imgdata = base64.b64decode(imgstring)
@@ -13,9 +11,13 @@ def convertBaseToImage(imgstring):
     with open(filename, 'wb') as f:
         f.write(imgdata)
 
-class CheckOCR():
+
+app = Flask(__name__)
+api = Api(app)
+
+class CheckOCR(Resource):
     def post(self):
-        req_data = json.get_json()
+        req_data = request.get_json()
         image = req_data['imageData']
         convertBaseToImage(image)
 

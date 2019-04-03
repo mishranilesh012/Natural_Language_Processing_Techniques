@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-
+import {AuthService} from './auth.service';
+import { Http } from '@angular/http';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -12,7 +13,9 @@ export class AppComponent {
   ocr:any;
   val:any;
   arg:any;
+  arr:any[];
 
+  constructor(http: Http,  private authService: AuthService){}
 
   selectFile(event){
     var files = event.target.files;
@@ -42,6 +45,12 @@ handleFile(event) {
   }
 
   console.log(ocrString);
+  this.authService.sendOcrDetails(ocrString).subscribe(data => {
+    this.arr = data;
+    //this.arr = Array.of(this.arr);
+     console.log(this.arr);
+
+  });
  }
 
 
