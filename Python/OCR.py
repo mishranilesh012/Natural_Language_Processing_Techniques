@@ -27,6 +27,7 @@ class CheckOCR():
 
         # Run tesseract OCR on image
         text = pytesseract.image_to_string(im, config=config)
+		
 
         # Print recognized text
         return jsonify(

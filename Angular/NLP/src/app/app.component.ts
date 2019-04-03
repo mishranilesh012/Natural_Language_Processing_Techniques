@@ -9,10 +9,10 @@ export class AppComponent {
   title = 'NLP';
   base64textString:any;
   imageData:any;
+  ocr:any;
+  val:any;
+  arg:any;
 
-  getString(val){
-    return val;
-  }
 
   selectFile(event){
     var files = event.target.files;
@@ -30,11 +30,20 @@ export class AppComponent {
 handleFile(event) {
   var binaryString = event.target.result;
          this.base64textString= btoa(binaryString);
-         console.log(btoa(binaryString));
+         //console.log(btoa(binaryString));
          this.imageData = btoa(binaryString);
 
-         this.getString(this.imageData)
  }
+ sendString(){
+  this.ocr = this.imageData;
+
+  const ocrString = {
+    imageData:this.ocr
+  }
+
+  console.log(ocrString);
+ }
+
 
 
 }
