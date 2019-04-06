@@ -1,0 +1,60 @@
+<header class="v-header container">
+  <div class="fullscreen-video-wrap">
+    <!--  https://www.videvo.net/video/typing-on-computer-white-bg/4475/ -->
+    <!-- DO NOT USE THIS VIDEO, I JUST NEEDED A HOSTED VIDEO FOR THIS CODEPEN> USE THE ONE ABOVE -->
+    <video src="../../assets/sound.mov" autoplay="true" loop="true">
+  </video>
+  </div>
+  <div class="header-overlay"></div>
+  <div class="header-content text-md-center">
+    <h1>SPEECH RECOGNITION</h1>
+    <h2>SPEECH SENTIMENT ANALYSIS</h2>
+    <!-- <p>Testing for Speech to Text and performing Sentiment Analysis</p> -->
+    <button class="btn-hover color-4">Read More</button>
+  </div>
+</header>
+
+<h1>Operations</h1><br><br>
+<div class="contain">
+    <div class="row">
+
+        <div class="col 6">
+          <div class="card">
+            <img class="card1" src="data:image/JPG;base64,{{imageData}}"><br>
+            <h1>DIARIZATION</h1>
+          </div>
+        </div>
+        <div class="col 6">
+         <div class="card2">
+            <div class="row">
+                <div class="col 2"></div>
+                <div class="col 8">
+                  <div class="new">
+
+                  </div>
+                  <button class="btn-hover color-7 shift" (click)="sendString()"><i class="fas fa-check-circle"></i> VERIFY</button>
+
+                  <div class="box1" *ngFor="let hero of arr">
+                    <p>{{hero.accuracy}}</p>
+                  </div>
+                </div>
+                <div class="col 2"></div>
+              </div>
+         </div>
+        </div>
+
+      </div>
+</div>
+
+
+
+      <label for="file-upload" class="custom-file-upload btn-hover color-9 shift2">
+          <i class="fas fa-cloud-upload-alt"></i> Custom Upload
+        </label>
+        <input id="file-upload" (change)="selectFile($event)" type="file"/>
+<!-- <section class="section section-b">
+  <div class="container">
+    <h2>Section B</h2>
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde, impedit amet minima iste autem cumque et maiores blanditiis doloribus aut dolorum quaerat non est voluptatum, tempore ut dolorem voluptas quod quae accusantium, ex inventore ducimus. Beatae mollitia exercitationem, quam similique, consectetur ratione reprehenderit delectus neque eligendi facere soluta dolor ducimus!</p>
+  </div>
+</section> -->

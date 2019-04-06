@@ -1,0 +1,79 @@
+
+<!-- <img width="300" alt="Angular Logo" src="data:image/JPG;base64,{{imageData}}">
+
+
+<input type='file' (change)="selectFile($event)">
+
+<textarea cols="30" rows="4" [(ngModel)] = "str"></textarea>
+
+<button type="button" (click)="sendString()">Click Me!</button>
+<button type="button" (click)="checkString()">Check</button> -->
+
+
+<div class="bodywrap">
+  <section>
+    <div class="wave"></div>
+  </section>
+</div>
+
+
+<br><br>
+<div class="content">
+  <h1 data-text="Object Character Recognition">Object Character Recognition</h1>
+</div>
+<!--
+<div class="buttons">
+  <button class="btn-hover color-1">BUTTON</button>
+  <button class="btn-hover color-2">BUTTON</button>
+  <button class="btn-hover color-3">BUTTON</button>
+  <button class="btn-hover color-4">BUTTON</button>
+  <button class="btn-hover color-5">BUTTON</button>
+  <button class="btn-hover color-6">BUTTON</button>
+  <button class="btn-hover color-7">BUTTON</button>
+  <button class="btn-hover color-8" (click)="sendString()">Send String</button>
+  <button class="btn-hover color-9">BUTTON</button>
+  <button class="btn-hover color-10">BUTTON</button>
+  <button class="btn-hover color-11">BUTTON</button>
+</div> -->
+
+<!-- ================================================================
+================================================================================= -->
+
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col 6">
+      <div class="card">
+        <img class="card1" src="data:image/JPG;base64,{{imageData}}">
+        <label for="file-upload" class="custom-file-upload btn-hover color-9 shift2">
+            <i class="fas fa-cloud-upload-alt"></i> Custom Upload
+          </label>
+          <input id="file-upload" (change)="selectFile($event)" type="file"/>
+      </div>
+    </div>
+    <div class="col 6">
+     <div class="card2">
+        <div class="row">
+            <div class="col 2"></div>
+            <div class="col 8">
+              <div class="new">
+                  <textarea class="form-control text" placeholder="Enter Text For Verification" [(ngModel)] = "str"></textarea>
+              </div>
+              <button class="btn-hover color-7 shift" (click)="sendString()"><i class="fas fa-check-circle"></i> VERIFY</button>
+
+              <div class="box1" *ngFor="let hero of arr">
+                <p>{{hero.accuracy}}</p>
+              </div>
+            </div>
+            <div class="col 2"></div>
+          </div>
+     </div>
+    </div>
+  </div>
+</div>
+
+
+
+<br><br>
