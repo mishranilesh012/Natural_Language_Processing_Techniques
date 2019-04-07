@@ -6,7 +6,7 @@
     "changeOrigin" : true
 },
 "/getData" :{
-  "target" : "http://localhost:2935",
+  "target" : "http://localhost:5000",
   "secure" : false,
   "logLevel" : "debug",
   "changeOrigin" : true
