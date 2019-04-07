@@ -39,7 +39,7 @@ $ git clone https://github.com/mishranilesh012/Natural_Language_Processing_Techn
 $ npm install -g @angular/cli@6
 ```
 
-* Run within angular directory *Github\Natural_Language_Processing_Techniques\Angular\NLP $*
+* Run within angular directory *Natural_Language_Processing_Techniques\Angular\NLP $*
 ```
 $ npm install
 ```
