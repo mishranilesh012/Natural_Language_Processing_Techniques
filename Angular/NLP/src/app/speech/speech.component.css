@@ -199,8 +199,8 @@ h1{
   box-shadow: 0 10px 20px 0 rgba(65, 132, 234, 0.75)
 }
 .card1{
-  width: 580px;
-  height: 440px;
+  width: 560px;
+  height: 400px;
   padding-top: 20px;
   padding-left: 20px;
   padding-bottom: 15px;
@@ -262,7 +262,7 @@ input[type="file"] {
   font-size: 25px;
 }
 .result{
-  padding-top: 200px;
+  padding-top: 100px;
   margin-left: -150px;
   font-size: 25px;
 }

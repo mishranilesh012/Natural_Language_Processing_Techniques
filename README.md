@@ -3,6 +3,14 @@
 
 Developed Speaker Diarization, Speech Sentiment Analysis and Object Character Recognition
 
+## Topics
+1. Getting Started
+2. Prerequisites
+3. Installation
+4. Angular Installation
+5. Dataset
+6. Screenshots
+
 ## Getting Started
 
 **For Speaker Diarization,  Package used :**

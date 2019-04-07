@@ -59,8 +59,8 @@ handleFile(event) {
   console.log(ocrString);
   this.authService.sendOcrDetails(ocrString).subscribe(data => {
     this.arr = data;
-    this.orignalTxt = data['orignalTxt'];
-    this.currentText = data['currentText'];
+    this.orignalTxt = data['original'];
+    this.currentText = data['current'];
     this.accuracy = data['accuracy'];
     this.status = data['status'];
     this.arr = Array.of(this.arr);

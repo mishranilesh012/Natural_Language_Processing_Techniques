@@ -98,14 +98,14 @@ class CheckOCR(Resource):
             currentTxt = methods[1][1]
 
         if (int(accuracy) == 100):
-            status = "matched !!"
+            status = "Match"
         else:
-            status = "not matched"
+            status = "Failed"
 
         outJson = {
 
-            "currentTxt": currentTxt,
-            "orignalTxt": inputText,
+            "current": currentTxt,
+            "original": inputText,
             "status": status,
             "accuracy": accuracy
 
