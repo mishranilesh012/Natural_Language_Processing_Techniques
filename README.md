@@ -1,8 +1,5 @@
 # Speaker Diarization, Speech Sentiment Analysis and Object Character Recognition
 
-
-Developed Speaker Diarization, Speech Sentiment Analysis and Object Character Recognition
-
 ## Getting Started
 
 For Speaker Diarization,  Package used :
