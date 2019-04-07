@@ -8,6 +8,8 @@ Developed Speaker Diarization, Speech Sentiment Analysis and Object Character Re
 For Speaker Diarization,  Package used :
 * [pyAudioAnalysis](https://github.com/tyiannak/pyAudioAnalysis) - *A Python library for audio feature extraction, classification, segmentation and applications.*
  
+For OCR, package used:
+* [Tesseract](https://github.com/tesseract-ocr/tesseract/wiki) - Tesseract is an optical character recognition engine for various operating systems.
 
 ## Prerequisites
 
