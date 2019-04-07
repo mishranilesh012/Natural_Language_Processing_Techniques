@@ -19,6 +19,7 @@ class CheckOCR(Resource):
         req_data = request.get_json()
         image = req_data['imageData']
         textarea = req_data['text']
+        textarea = textarea.lower()
         convertBaseToImage(image)
 
         imPath = 'some_image.JPG'
@@ -28,6 +29,8 @@ class CheckOCR(Resource):
         im = cv2.imread(imPath, cv2.COLOR_BGR2GRAY)
 
         methods = [["m"],["g"]]
+        listArea = []
+        listText = []
         for method in methods:
 
             blur = ''
@@ -37,6 +40,7 @@ class CheckOCR(Resource):
                 blur = cv2.medianBlur(im, 3)
 
             text = pytesseract.image_to_string(blur, config=config)
+            text = text.lower()
             print(text)
             
         
@@ -49,7 +53,7 @@ class CheckOCR(Resource):
             totalCount = len(listArea)
             for i in range(len(listArea)):
 
-                if( i < len(listText)   and listArea[i] == listText[i]):
+                if( i < len(listText) and listArea[i] == listText[i]):
                     matchCount+=1
 
             accuracy = (matchCount/totalCount)*100
@@ -65,7 +69,7 @@ class CheckOCR(Resource):
             accuracy = methods[1][2]
             currentText = methods[1][1]
 
-        if(int(accuracy) == 100 and len(listArea)==len(listText)):
+        if(len(listArea)==len(listText) and int(accuracy) == 100):
             status = "matched !!"
         else:
             status = "not matched"
