@@ -4,7 +4,6 @@
 Developed Speaker Diarization, Speech Sentiment Analysis and Object Character Recognition
 
 ## Getting Started
----
 
 For Speaker Diarization,  Package used :
 * [pyAudioAnalysis](https://github.com/tyiannak/pyAudioAnalysis) - *A Python library for audio feature extraction, classification, segmentation and applications.*
@@ -48,9 +47,10 @@ http://localhost: 4200
 
 
 ## Dataset
+Tested Dataset
 
-* OCR Dataset
-* Diarization
+* [OCR Dataset](http://www.dropwizard.io/1.0.2/docs/)
+* [Diarization](http://www.dropwizard.io/1.0.2/docs/)
 
 
 ## Screenshots
