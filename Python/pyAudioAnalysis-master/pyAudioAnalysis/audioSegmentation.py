@@ -986,7 +986,8 @@ def speakerDiarization(filename, n_speakers, mt_size=2.0, mt_step=0.2,
             plt.plot(s_range, sil_all)
             plt.xlabel("number of clusters");
             plt.ylabel("average clustering's sillouette");
-        plt.show()
+        #plt.show()
+		plt.savefig('output/outImg.jpg')
     return cls
     
 def speakerDiarizationEvaluateScript(folder_name, ldas):

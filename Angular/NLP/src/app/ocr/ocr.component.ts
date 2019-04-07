@@ -18,6 +18,11 @@ export class OcrComponent implements OnInit {
   arr:any[];
   str: string;
 
+  accuracy:any;
+  currentText:any;
+  orignalTxt:any;
+  status:any;
+
   constructor(http: Http,  private authService: AuthService) { }
 
   ngOnInit() {
@@ -39,7 +44,7 @@ export class OcrComponent implements OnInit {
 handleFile(event) {
   var binaryString = event.target.result;
          this.base64textString= btoa(binaryString);
-         //console.log(btoa(binaryString));
+         console.log(btoa(binaryString));
          this.imageData = btoa(binaryString);
 
  }
@@ -54,6 +59,10 @@ handleFile(event) {
   console.log(ocrString);
   this.authService.sendOcrDetails(ocrString).subscribe(data => {
     this.arr = data;
+    this.orignalTxt = data['orignalTxt'];
+    this.currentText = data['currentText'];
+    this.accuracy = data['accuracy'];
+    this.status = data['status'];
     this.arr = Array.of(this.arr);
      console.log(this.arr[0]);
 

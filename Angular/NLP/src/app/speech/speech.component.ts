@@ -16,6 +16,10 @@ export class SpeechComponent implements OnInit {
   arg:any;
   arr:any[];
   str: string;
+
+  orignalText:any;
+  Score:any;
+  imgData:any;
   constructor(http: Http,  private authService: AuthService) { }
 
   ngOnInit() {
@@ -24,6 +28,8 @@ export class SpeechComponent implements OnInit {
   selectFile(event){
     var files = event.target.files;
     var file = files[0];
+
+
 
   if (files && file) {
       var reader = new FileReader();
@@ -37,7 +43,7 @@ export class SpeechComponent implements OnInit {
 handleFile(event) {
   var binaryString = event.target.result;
          this.base64textString= btoa(binaryString);
-         //console.log(btoa(binaryString));
+         console.log(btoa(binaryString));
          this.imageData = btoa(binaryString);
 
  }
@@ -45,17 +51,37 @@ handleFile(event) {
   this.ocr = this.imageData;
 
   const ocrString = {
-    imageData:this.ocr,
-    text:this.str
+    imageData:this.ocr
   }
 
   console.log(ocrString);
-  this.authService.sendOcrDetails(ocrString).subscribe(data => {
+  this.authService.sendData(ocrString).subscribe(data => {
     this.arr = data;
+    this.orignalText = data['orignalText'];
+    this.Score = data['Score'];
+    this.imgData = data['imgData'];
     this.arr = Array.of(this.arr);
-     console.log(this.arr[0]);
+    console.log(this.arr[0]);
 
   });
  }
+
+//  fileChange(event) {
+//   let fileList: FileList = event.target.files;
+//   if(fileList.length > 0) {
+//       let file: File = fileList[0];
+//       let formData:FormData = new FormData();
+//       formData.append('uploadFile', file, file.name);
+//       console.log(formData);
+
+//       this.authService.sendData(formData).subscribe(data => {
+//         this.arr = data;
+//         this.arr = Array.of(this.arr);
+//          console.log(this.arr[0]);
+
+//       });
+
+//   }
+// }
 
 }

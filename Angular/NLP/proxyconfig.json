@@ -4,5 +4,11 @@
     "secure" : false,
     "logLevel" : "debug",
     "changeOrigin" : true
+},
+"/getData" :{
+  "target" : "http://localhost:2935",
+  "secure" : false,
+  "logLevel" : "debug",
+  "changeOrigin" : true
 }
 }

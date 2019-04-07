@@ -14,14 +14,36 @@
   </div>
 </header>
 
-<h1>Operations</h1><br><br>
-<div class="contain">
+<div class="container">
+  <div class="row">
+
+    <div class="col 6">
+      <div class="choose">
+        <label for="file-upload" class="custom-file-upload btn-hover color-9 ">
+          <i class="fas fa-cloud-upload-alt"></i> Upload WAV File
+        </label>
+        <input id="file-upload" (change)="selectFile($event)" type="file"/>
+      </div>
+    </div>
+    <div class="col 6">
+      <button class="btn-hover color-7 shift" (click)="sendString()"><i class="fas fa-check-circle"></i> GENERATE</button>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+<div class="contain" >
+
     <div class="row">
 
         <div class="col 6">
           <div class="card">
-            <img class="card1" src="data:image/JPG;base64,{{imageData}}"><br>
-            <h1>DIARIZATION</h1>
+            <img class="card1" src="data:image/JPG;base64,{{imgData}}"><br>
+
+            <h1>Speaker Diarization</h1>
           </div>
         </div>
         <div class="col 6">
@@ -30,13 +52,13 @@
                 <div class="col 2"></div>
                 <div class="col 8">
                   <div class="new">
-
+                      <p><b>Audio Text :</b> <br>{{orignalText}}</p>
                   </div>
-                  <button class="btn-hover color-7 shift" (click)="sendString()"><i class="fas fa-check-circle"></i> VERIFY</button>
-
-                  <div class="box1" *ngFor="let hero of arr">
-                    <p>{{hero.accuracy}}</p>
+                  <div class="result">
+                    <p><b>Sentiment Analysis :</b> {{Score}}</p>
                   </div>
+
+
                 </div>
                 <div class="col 2"></div>
               </div>
@@ -45,15 +67,14 @@
 
       </div>
 </div>
+<br><br>
 
 
 
-      <label for="file-upload" class="custom-file-upload btn-hover color-9 shift2">
-          <i class="fas fa-cloud-upload-alt"></i> Custom Upload
-        </label>
-        <input id="file-upload" (change)="selectFile($event)" type="file"/>
+
 <!-- <section class="section section-b">
   <div class="container">
+
     <h2>Section B</h2>
     <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde, impedit amet minima iste autem cumque et maiores blanditiis doloribus aut dolorum quaerat non est voluptatum, tempore ut dolorem voluptas quod quae accusantium, ex inventore ducimus. Beatae mollitia exercitationem, quam similique, consectetur ratione reprehenderit delectus neque eligendi facere soluta dolor ducimus!</p>
   </div>

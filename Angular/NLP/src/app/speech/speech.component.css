@@ -94,6 +94,7 @@ background: linear-gradient(to right, #3f2b96, #a8c0ff); /* W3C, IE 10+/ Edge, F
 
 h1{
   text-align: center;
+  margin-bottom: 0;
 }
 
 .section-b{
@@ -191,7 +192,6 @@ h1{
      background-image: linear-gradient(to right, #eb3941, #f15e64, #e14e53, #e2373f);  box-shadow: 0 5px 15px rgba(242, 97, 103, .4);
 }
 
-
 .card{
   width: 600px;
   height: 500px;
@@ -199,8 +199,11 @@ h1{
   box-shadow: 0 10px 20px 0 rgba(65, 132, 234, 0.75)
 }
 .card1{
-  width: 600px;
-  height: 400px;
+  width: 580px;
+  height: 440px;
+  padding-top: 20px;
+  padding-left: 20px;
+  padding-bottom: 15px;
 
 }
 .card2{
@@ -209,9 +212,7 @@ h1{
   box-shadow: 0 10px 20px 0 rgba(65, 132, 234, 0.75)
 }
 
-.new{
-  margin-top: 50px;
-}
+
 .text{
   width:450px;
   height: 250px;
@@ -219,13 +220,10 @@ h1{
 }
 
 .shift{
-  margin-left: 120px;
+  margin-top: 40px;
 }
 .shift2{
   margin-left: 100px;
-}
-.container{
-  padding-top: 100px;
 }
 
 
@@ -234,6 +232,13 @@ h1{
   width: 500px;
   padding-top: 20px;
 }
+
+
+.contain{
+  padding-left: 100px;
+  padding-top: -80px;
+}
+
 
 input[type="file"] {
   display: none;
@@ -250,6 +255,14 @@ input[type="file"] {
   font-size: 18px;
 
 }
-.contain{
-  padding-left: 100px;
+
+.new{
+  padding-top: 50px;
+  margin-left: -150px;
+  font-size: 25px;
+}
+.result{
+  padding-top: 200px;
+  margin-left: -150px;
+  font-size: 25px;
 }

@@ -1,9 +1,16 @@
 import cv2
 import pytesseract
+import audioAnalysis as adA
+# adA.speakerDiarizationWrapper("dataFiles/mc1.wav",0,False)
+import speech_recognition as sr
+from textblob import TextBlob
 from flask import Flask, request, jsonify
 from flask_restful import Resource, Api
 import base64
 import json
+
+
+r = sr.Recognizer()
 
 def convertBaseToImage(imgstring):
     imgdata = base64.b64decode(imgstring)
@@ -20,69 +27,92 @@ class CheckOCR(Resource):
         image = req_data['imageData']
         textarea = req_data['text']
         textarea = textarea.lower()
+        inputText = textarea
         convertBaseToImage(image)
 
         imPath = 'some_image.JPG'
         pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
         config = ('-l eng --oem 1 --psm 6')
         # Read image from disk
-        im = cv2.imread(imPath, cv2.COLOR_BGR2GRAY)
+        gray = cv2.imread(imPath, cv2.COLOR_BGR2GRAY)
 
-        methods = [["m"],["g"]]
-        listArea = []
-        listText = []
+        # text = pytesseract.image_to_string(blur, config=config)
+        # text = text.lower()
+        # print(text)
+
+        methods = [["m"], ["g"]]
+        listInput = []
+        listTxt = []
+
         for method in methods:
 
             blur = ''
-            if(method[0] == 'g'):
-                blur = cv2.GaussianBlur(im,(15,15),0)
+            if (method[0] == 'g'):
+                blur = cv2.GaussianBlur(gray, (15, 15), 0)
             else:
-                blur = cv2.medianBlur(im, 3)
+                blur = cv2.medianBlur(gray, 3)
+
+            cv2.imwrite("testImg/imageToSave.jpg", blur)
 
             text = pytesseract.image_to_string(blur, config=config)
             text = text.lower()
             print(text)
-            
-        
-            method.append(text)
+            txt = text.lower()
 
-            listArea = list(textarea)
-            listText = list(text)
+            method.append(txt)
+
+            listInput = list(inputText)
+            listTxt = list(txt)
 
             matchCount = 0
-            totalCount = len(listArea)
-            for i in range(len(listArea)):
+            listTemp1 = []
+            listTemp2 = []
+            if (len(listInput) >= len(listTxt)):
+                totalCount = len(listInput)
+                listTemp1 = listInput
+                listTemp2 = listTxt
+            else:
+                totalCount = len(listTxt)
+                listTemp1 = listTxt
+                listTemp2 = listInput
 
-                if( i < len(listText) and listArea[i] == listText[i]):
-                    matchCount+=1
+            for i in range(len(listTemp1)):
 
-            accuracy = (matchCount/totalCount)*100
+                if (i < len(listTemp2) and listTemp1[i] == listTemp2[i]):
+                    matchCount += 1
+
+            accuracy = (matchCount / totalCount) * 100
             method.append(accuracy)
+
+            print(matchCount)
+            print(totalCount)
 
         accuracy = 0
         status = ""
-        currentText = ""
-        if(methods[0][2] > methods[1][2] ):
+        currentTxt = ""
+        if (methods[0][2] > methods[1][2]):
             accuracy = methods[0][2]
-            currentText = methods[0][1]
+            currentTxt = methods[0][1]
         else:
             accuracy = methods[1][2]
-            currentText = methods[1][1]
+            currentTxt = methods[1][1]
 
-        if(len(listArea)==len(listText) and int(accuracy) == 100):
+        if (int(accuracy) == 100):
             status = "matched !!"
         else:
             status = "not matched"
 
-        return ({
-            "currentText" : currentText,
-            "orignalTxt" : textarea,
-            "status" : status,
-            "accuracy" : accuracy
-        }
-        )
+        outJson = {
 
-# if __name__ == '__main__':
-#
+            "currentTxt": currentTxt,
+            "orignalTxt": inputText,
+            "status": status,
+            "accuracy": accuracy
+
+        }
+
+        return (outJson)
+
 api.add_resource(CheckOCR,"/checkOcr")
+
 app.run(port = 5000, debug = True)

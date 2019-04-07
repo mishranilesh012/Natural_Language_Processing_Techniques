@@ -18,4 +18,10 @@ export class AuthService {
     headers.append('Content-Type', ' application/json');
     return this.http.post('/checkOcr', ocr_details, {headers: headers}).pipe(map(res => res.json()));
   }
+
+  sendData(data) {
+    const headers = new Headers();
+    headers.append('Content-Type', ' application/json');
+    return this.http.post('/getData', data, {headers: headers}).pipe(map(res => res.json()));
+  }
 }

@@ -1,115 +1,63 @@
-from PIL import Image
-import pyocr.builders
+import audioAnalysis as adA
+# adA.speakerDiarizationWrapper("dataFiles/mc1.wav",0,False)
+import speech_recognition as sr
+from textblob import TextBlob
 from flask import Flask, request
 from flask_restful import Resource, Api
 import base64
-import cv2
-# with open("testImg/test_1.jpg", "rb") as image_file:
-#     img_data = base64.b64encode(image_file.read())
-# print(img_data)
-
 app = Flask(__name__)
 api = Api(app)
 
-tools = pyocr.get_available_tools()
-print(tools)
-tool = tools[0]
-langs = tool.get_available_languages()
-lang = langs[0]
+r = sr.Recognizer()
 
 
-class ExtractImg(Resource):
+class SpeechProcess(Resource):
+	# @jwt_required()
+	def post(self):
 
-    def post(self):
-        req_data = request.get_json()
+		req_data = request.get_json()
+		fileStr = req_data["imageData"]
+		fileStr = (str.encode(fileStr))
+		print(fileStr)
 
-        img_data = req_data["img"]
-        inputText = req_data["inputText"]
-        inputText = inputText.lower()
+		with open("output/inputAudio.wav", "wb") as fh:
+			fh.write(base64.decodebytes(fileStr))
 
-        print(req_data)
-        print(inputText)
+		filePath = "output/inputAudio.wav"
+		adA.speakerDiarizationWrapper(filePath,0,False)
 
-        img_data = (str.encode(img_data))
-
-        with open("testImg/imageToSave.jpg", "wb") as fh:
-            fh.write(base64.decodebytes(img_data))
-
-        image = cv2.imread("testImg/imageToSave.jpg")
-        gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-
-        methods = [["m"],["g"]]
-        listInput = []
-        listTxt = []
-
-        for method in methods:
-
-            blur = ''
-            if(method[0] == 'g'):
-                blur = cv2.GaussianBlur(gray,(15,15),0)
-            else:
-                blur = cv2.medianBlur(gray, 3)
+		with open("output/outImg.jpg", "rb") as image_file:
+			img_data = base64.b64encode(image_file.read())
 
 
-            cv2.imwrite("testImg/imageToSave.jpg",blur)
+		harvard = sr.AudioFile(filePath)
+		outJson = {}
+		with harvard as source:
+			audio = r.record(source)
 
-            txt = tool.image_to_string(
-                    Image.open("testImg/imageToSave.jpg"),
-                    lang=lang,
-                builder=pyocr.builders.TextBuilder()
-            )
-            print("----")
-            print(txt)
-            txt = txt.lower()
+			txt = r.recognize_google(audio)
 
-            method.append(txt)
+			if(len(list(txt)) > 0):
+				print(txt)
+				sentiment = TextBlob(txt)
+				img_data = img_data.decode("utf-8")
+				outJson = {
+					"orignalText" : txt,
+					"Score": sentiment.sentiment.polarity,
+					"imgData": img_data
+				}
 
-            listInput = list(inputText)
-            listTxt = list(txt)
-
-            matchCount = 0
-            totalCount = len(listInput)
-            for i in range(len(listInput)):
-
-                if( i < len(listTxt)   and listInput[i] == listTxt[i]):
-                    matchCount+=1
-
-            accuracy = (matchCount/totalCount)*100
-            method.append(accuracy)
-
-            print(matchCount)
-            print(totalCount)
-
-        accuracy = 0
-        status = ""
-        currentTxt = ""
-        if(methods[0][2] > methods[1][2] ):
-            accuracy = methods[0][2]
-            currentTxt = methods[0][1]
-        else:
-            accuracy = methods[1][2]
-            currentTxt = methods[1][1]
-
-        if( len(listInput) == len(listTxt) and int(accuracy) == 100):
-            status = "matched !!"
-        else:
-            status = "not matched"
+			else:
+				outJson = {
+					"Score: ": "Empty text"
+				}
 
 
-        outJson = {
+		return (outJson)
 
-            "currentTxt" : currentTxt,
-            "orignalTxt" : inputText,
-            "status" : status,
-            "accuracy" : accuracy
+	def get(self):
+		return ({"data":"information"})
 
-        }
+api.add_resource(SpeechProcess,"/getData")
 
-        return (outJson)
-
-
-api.add_resource(ExtractImg,"/getText")
-
-app.run(host='127.0.0.1', port = '2935', debug = True)
-
-
+app.run(host= "127.0.0.1", port = "2935", debug = True)
