@@ -62,5 +62,7 @@ http://localhost: 4200
 
 ## Screenshots
 ### OCR
+![ocr11](https://user-images.githubusercontent.com/31385418/55680623-cf8bd380-58d0-11e9-98f1-e8ae747a97f6.png)
+
 
 ### Speaker Diarization and Speech Sentiment Analysis
