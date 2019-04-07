@@ -64,7 +64,12 @@ http://localhost: 4200
 ### OCR
 ![ocr11](https://user-images.githubusercontent.com/31385418/55680623-cf8bd380-58d0-11e9-98f1-e8ae747a97f6.png)
 
-**Output**
+### Output
 ![ocroutput](https://user-images.githubusercontent.com/31385418/55680638-1a0d5000-58d1-11e9-8466-7c9199427412.JPG)
 
 ### Speaker Diarization and Speech Sentiment Analysis
+![dia111](https://user-images.githubusercontent.com/31385418/55680880-7cb41b00-58d4-11e9-9e42-d3fef0290351.png)
+
+### Output
+
+
