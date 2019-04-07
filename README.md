@@ -34,7 +34,7 @@ $ git clone https://github.com/mishranilesh012/Natural_Language_Processing_Techn
 
 ## Angular Installation
 
-* Installing Angular CLI
+* Installing Angular CLI version 6
 ```
 $ npm install -g @angular/cli@6
 ```
