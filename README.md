@@ -10,8 +10,7 @@ For Speaker Diarization,  Package used :
 * [pyAudioAnalysis](https://github.com/tyiannak/pyAudioAnalysis) - *A Python library for audio feature extraction, classification, segmentation and applications.*
  
 
-### Prerequisites
----
+## Prerequisites
 
 * Dependencies for OCR
 ```
@@ -24,8 +23,7 @@ pip install -U textblob
 pip install numpy matplotlib scipy sklearn hmmlearn simplejson eyed3 pydub
 ```
 
-### Installation
----
+## Installation
 
 * Clone the source of this library:
 
@@ -33,8 +31,7 @@ pip install numpy matplotlib scipy sklearn hmmlearn simplejson eyed3 pydub
 git clone https://github.com/mishranilesh012/Natural_Language_Processing_Techniques.git
 ```
 
-### Angular Installation
----
+## Angular Installation
 
 * Run within angular directory *Github\Natural_Language_Processing_Techniques\Angular\NLP $*
 ```
@@ -48,13 +45,13 @@ npm start
 ```
 http://localhost: 4200
 ``` 
-End with an example of getting some data out of the system or using it for a little demo
 
-### Dataset
----
+
+## Dataset
+
 * OCR Dataset
 * Diarization
 
 
-### Screenshots
+## Screenshots
 
