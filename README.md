@@ -54,4 +54,6 @@ Tested Dataset
 
 
 ## Screenshots
+### OCR
 
+### Speaker Diarization and Speech Sentiment Analysis
