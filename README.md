@@ -49,8 +49,8 @@ http://localhost: 4200
 ## Dataset
 Tested Dataset
 
-* [OCR Dataset](http://www.dropwizard.io/1.0.2/docs/)
-* [Diarization](http://www.dropwizard.io/1.0.2/docs/)
+* [OCR Dataset](https://github.com/mishranilesh012/Natural_Language_Processing_Techniques/tree/master/Dataset/OCR%20Dataset)
+* [Diarization](https://github.com/mishranilesh012/Natural_Language_Processing_Techniques/tree/master/Dataset/Diarization)
 
 
 ## Screenshots
