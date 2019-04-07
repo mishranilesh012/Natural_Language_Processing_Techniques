@@ -15,13 +15,13 @@ Developed Speaker Diarization, Speech Sentiment Analysis and Object Character Re
 
 * Dependencies for OCR
 ```
-pip install Flask flask-restful SpeechRecognition opencv-python pytesseract
+$ pip install Flask flask-restful SpeechRecognition opencv-python pytesseract
 
-pip install -U textblob
+$ pip install -U textblob
 ```
 * Dependencies for pyAudioAnalysis
 ```
-pip install numpy matplotlib scipy sklearn hmmlearn simplejson eyed3 pydub
+$ pip install numpy matplotlib scipy sklearn hmmlearn simplejson eyed3 pydub
 ```
 
 ## Installation
@@ -29,18 +29,23 @@ pip install numpy matplotlib scipy sklearn hmmlearn simplejson eyed3 pydub
 * Clone the source of this library:
 
 ```
-git clone https://github.com/mishranilesh012/Natural_Language_Processing_Techniques.git
+$ git clone https://github.com/mishranilesh012/Natural_Language_Processing_Techniques.git
 ```
 
 ## Angular Installation
 
+* Installing Angular CLI
+```
+$ npm install -g @angular/cli@6
+```
+
 * Run within angular directory *Github\Natural_Language_Processing_Techniques\Angular\NLP $*
 ```
-npm install
+$ npm install
 ```
 * Running Angular 
 ```
-npm start
+$ npm start
 ```
 * Open browser on 
 ```
